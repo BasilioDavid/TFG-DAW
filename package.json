@@ -7,7 +7,8 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,10 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "husky": "^7.0.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "commitlint": "^16.2.3",
     "@angular-devkit/build-angular": "~13.3.0",
     "@angular-eslint/eslint-plugin": "~13.1.0",
     "@angular-eslint/eslint-plugin-template": "~13.1.0",
