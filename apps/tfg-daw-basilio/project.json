@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/tfg-daw-basilio",
+  "sourceRoot": "apps/tfg-daw-basilio/src",
+  "prefix": "tfg-daw-basilio",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/tfg-daw-basilio",
+        "index": "apps/tfg-daw-basilio/src/index.html",
+        "main": "apps/tfg-daw-basilio/src/main.ts",
+        "polyfills": "apps/tfg-daw-basilio/src/polyfills.ts",
+        "tsConfig": "apps/tfg-daw-basilio/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/tfg-daw-basilio/src/favicon.ico",
+          "apps/tfg-daw-basilio/src/assets"
+        ],
+        "styles": ["apps/tfg-daw-basilio/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/tfg-daw-basilio/src/environments/environment.ts",
+              "with": "apps/tfg-daw-basilio/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "tfg-daw-basilio:build:production"
+        },
+        "development": {
+          "browserTarget": "tfg-daw-basilio:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/tfg-daw-basilio/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tfg-daw-basilio:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/tfg-daw-basilio/src/**/*.ts",
+          "apps/tfg-daw-basilio/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/tfg-daw-basilio"],
+      "options": {
+        "jestConfig": "apps/tfg-daw-basilio/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,28 @@
+{
+  "root": "apps/tfg-daw-basilio-e2e",
+  "sourceRoot": "apps/tfg-daw-basilio-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/tfg-daw-basilio-e2e/cypress.json",
+        "devServerTarget": "tfg-daw-basilio:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "tfg-daw-basilio:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/tfg-daw-basilio-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["tfg-daw-basilio"]
+}

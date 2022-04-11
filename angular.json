@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "tfg-daw-basilio": "apps/tfg-daw-basilio",
+    "tfg-daw-basilio-e2e": "apps/tfg-daw-basilio-e2e"
+  }
+}
