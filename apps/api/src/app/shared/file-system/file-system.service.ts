@@ -6,19 +6,22 @@ import {ENV} from "../enviroment/env";
 export class FileSystemService {
   constructor(private readonly env: ENV) {}
 
-  //TODO: create a way to get safe path
   async ls(path: any) {
     const list = {
       files: [],
       directories: [],
     };
 
-    const elements = await readdir(`${this.env.PUBLIC_PATH}/${path}`);
-    for (const element of elements) {
-      const isFile = (await stat(`${this.env.PUBLIC_PATH}/${element}`)).isFile();
-      list[isFile ? 'files' : 'directories'].push(element);
+    try {
+      const elements = await readdir(`${this.env.PUBLIC_PATH}/${path}`);
+      for (const element of elements) {
+        const isFile = (await stat(`${this.env.PUBLIC_PATH}/${element}`)).isFile();
+        list[isFile ? 'files' : 'directories'].push(element);
+      }
+    } catch (e) {
+      //TODO: change this into a logger service
+      console.log(e)
     }
-
     return list;
   }
 
