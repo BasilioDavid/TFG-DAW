@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import {FileManagerController} from "./core/file-manager/file-manager.controller";
+import {FileSystemService} from "./shared/file-system/file-system.service";
+import {env} from "./shared/enviroment/enviroment";
+import {ENV} from "./shared/enviroment/env";
 
 @Module({
   imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [FileManagerController],
+  providers: [FileSystemService,{
+    provide: ENV,
+    useValue: env,
+  }],
 })
 export class AppModule {}
