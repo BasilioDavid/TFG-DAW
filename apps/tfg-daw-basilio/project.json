@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/tfg-daw-basilio",
         "index": "apps/tfg-daw-basilio/src/index.html",
@@ -18,7 +20,9 @@
           "apps/tfg-daw-basilio/src/favicon.ico",
           "apps/tfg-daw-basilio/src/assets"
         ],
-        "styles": ["apps/tfg-daw-basilio/src/styles.scss"],
+        "styles": [
+          "apps/tfg-daw-basilio/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -86,7 +90,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/tfg-daw-basilio"],
+      "outputs": [
+        "coverage/apps/tfg-daw-basilio"
+      ],
       "options": {
         "jestConfig": "apps/tfg-daw-basilio/jest.config.js",
         "passWithNoTests": true

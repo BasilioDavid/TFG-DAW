@@ -3,6 +3,7 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "desktop": "apps/desktop",
     "tfg-daw-basilio": "apps/tfg-daw-basilio",
     "tfg-daw-basilio-e2e": "apps/tfg-daw-basilio-e2e"
   }
