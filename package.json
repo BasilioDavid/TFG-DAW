@@ -5,6 +5,10 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
+    "start:front": "nx serve",
+    "start:back": "nx serve api",
+    "start:desktop": "nx serve desktop",
+    "start:all": "run-p start:front start:back && npm-run-all start:desktop",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx run-many --all --target=test",
