@@ -1,0 +1,13 @@
+Main
+<a [routerLink]="'/main'">Clean</a><br>
+<br>
+<a [routerLink]="['/main',{outlets: {right: 'explorer', left:'explorer'}}]">both</a><br>
+<a [routerLink]="['/main',{outlets: {left:'explorer'}}]">left explorer</a><br>
+<a [routerLink]="['/main',{outlets: {left:'editor'}}]">left editor</a><br>
+<a [routerLink]="['/main',{outlets: {right: 'explorer'}}]">right explorer</a><br>
+<a [routerLink]="['/main',{outlets: {right: 'editor'}}]">right editor</a><br>
+<br>
+left
+<router-outlet name="left"></router-outlet>
+right
+<router-outlet name="right"></router-outlet>
