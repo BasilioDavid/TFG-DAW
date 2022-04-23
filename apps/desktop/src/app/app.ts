@@ -80,6 +80,9 @@ export default class App {
       App.mainWindow.show();
     });
 
+    //TODO: change the ubication from here
+    App.mainWindow.webContents.openDevTools();
+
     // handle all external redirects in a new browser window
     // App.mainWindow.webContents.on('will-navigate', App.onRedirect);
     // App.mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options) => {
