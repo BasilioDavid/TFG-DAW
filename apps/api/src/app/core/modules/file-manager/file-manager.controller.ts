@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { Controller, Get, Query, Res } from '@nestjs/common';
-import { FileSystemService } from '../../shared/file-system/file-system.service';
+import { FileSystemService } from '../../../common/file-system/file-system.service';
 
 @Controller('file-manager')
 export class FileManagerController {
