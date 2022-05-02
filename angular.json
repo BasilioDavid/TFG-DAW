@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "api-auth": "apps/api-auth",
+    "api-gateway": "apps/api-gateway",
     "api-interfaces": "libs/api-interfaces",
     "desktop": "apps/desktop",
     "tfg-daw-basilio": "apps/tfg-daw-basilio",

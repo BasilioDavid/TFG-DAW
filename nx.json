@@ -3,6 +3,10 @@
   "affected": {
     "defaultBase": "main"
   },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
