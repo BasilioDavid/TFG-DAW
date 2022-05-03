@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 import { Transport } from '@nestjs/microservices';
+import { BACKEND_ENV } from '@tfg-daw-basilio/environment';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -10,9 +11,9 @@ async function bootstrap() {
     name: 'AUTH_SERVICE',
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://localhost:5672'],
+      urls: [BACKEND_ENV.RABBITMQ_URL],
       //TODO: search a way to change into a environment variable
-      queue: 'response_queue',
+      queue: BACKEND_ENV.QUEUE.RESPONSE.NAME,
       queueOptions: {
         durable: true,
       },

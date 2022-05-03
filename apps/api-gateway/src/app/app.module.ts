@@ -5,25 +5,26 @@ import {
   EventPattern,
   Transport,
 } from '@nestjs/microservices';
+import { BACKEND_ENV } from '@tfg-daw-basilio/environment';
 
 @Controller('test')
 class TestController {
   constructor(@Inject('AUTH_SERVICE') private auth: ClientProxy) {}
 
   @Get('')
-  post(@Query() query: any) {
+  post(@Query() query: object) {
     console.log(query);
-    this.auth.emit<string>('check', { ...query });
+    this.auth.emit<object>(BACKEND_ENV.QUEUE.AUTH.EVENT.CHECK, { ...query });
     return 'bien';
   }
 
-  @EventPattern('response_ok')
+  @EventPattern(BACKEND_ENV.QUEUE.RESPONSE.EVENT.OK)
   async responseOk(data: string) {
     console.log('Oleee');
     console.log(data);
   }
 
-  @EventPattern('response_bad')
+  @EventPattern(BACKEND_ENV.QUEUE.RESPONSE.EVENT.BAD)
   async responseBad(data: string) {
     console.log('vaia');
     console.log(data);
@@ -38,9 +39,9 @@ class TestController {
         name: 'AUTH_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost:5672'],
+          urls: [BACKEND_ENV.RABBITMQ_URL],
           //TODO: search a way to change into a environment variable
-          queue: 'auth_queue',
+          queue: BACKEND_ENV.QUEUE.AUTH.NAME,
           queueOptions: {
             durable: true,
           },

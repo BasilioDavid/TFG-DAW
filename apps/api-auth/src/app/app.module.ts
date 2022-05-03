@@ -5,20 +5,25 @@ import {
   EventPattern,
   Transport,
 } from '@nestjs/microservices';
+import { BACKEND_ENV } from '@tfg-daw-basilio/environment';
 
 @Controller('test')
 class TestController {
   constructor(
     @Inject('RESPONSE_SERVICE') private readonly responseService: ClientProxy
   ) {}
-  @EventPattern('check')
+
+  @EventPattern(BACKEND_ENV.QUEUE.AUTH.EVENT.CHECK)
   async checkUser({ user, pass }: { user: string; pass: string }) {
     if (user === pass) {
       console.log('bien');
-      this.responseService.emit('response_ok', 'tokenOK');
+      this.responseService.emit(BACKEND_ENV.QUEUE.RESPONSE.EVENT.OK, 'tokenOK');
     } else {
       console.log('mal');
-      this.responseService.emit('response_bad', 'tokenBad');
+      this.responseService.emit(
+        BACKEND_ENV.QUEUE.RESPONSE.EVENT.BAD,
+        'tokenBad'
+      );
     }
   }
 }
@@ -30,9 +35,8 @@ class TestController {
         name: 'RESPONSE_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://localhost:5672'],
-          //TODO: search a way to change into a environment variable
-          queue: 'response_queue',
+          urls: [BACKEND_ENV.RABBITMQ_URL],
+          queue: BACKEND_ENV.QUEUE.RESPONSE.NAME,
           queueOptions: {
             //TODO: check if i want transient queue
             durable: true,

@@ -6,6 +6,7 @@
     "api-gateway": "apps/api-gateway",
     "api-interfaces": "libs/api-interfaces",
     "desktop": "apps/desktop",
+    "environment": "libs/environment",
     "tfg-daw-basilio": "apps/tfg-daw-basilio",
     "tfg-daw-basilio-e2e": "apps/tfg-daw-basilio-e2e"
   }

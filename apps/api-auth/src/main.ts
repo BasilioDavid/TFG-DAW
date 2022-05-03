@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { BACKEND_ENV } from '@tfg-daw-basilio/environment';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -9,8 +10,8 @@ async function bootstrap() {
     {
       transport: Transport.RMQ,
       options: {
-        urls: ['amqp://localhost:5672'],
-        queue: 'auth_queue',
+        urls: [BACKEND_ENV.RABBITMQ_URL],
+        queue: BACKEND_ENV.QUEUE.AUTH.NAME,
         queueOptions: {
           durable: true,
         },
