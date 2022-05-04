@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tfg-daw-basilio/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@tfg-daw-basilio/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@tfg-daw-basilio/environment": ["libs/environment/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

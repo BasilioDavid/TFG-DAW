@@ -5,8 +5,8 @@ export function environment(): string {
 export const BACKEND_ENV = {
   RABBITMQ_URL: 'amqp://localhost:5672',
   QUEUE: {
-    RESPONSE: {
-      NAME: 'response_queue',
+    GATEWAY: {
+      NAME: 'gateway_queue',
       EVENT: {
         OK: 'ok',
         BAD: 'bad',
@@ -25,6 +25,12 @@ export const BACKEND_ENV = {
     LOG: {
       NAME: 'log_queue',
       EVENT: {},
+    },
+    DISPATCHER: {
+      NAME: 'dispatcher_queue',
+      EVENT: {
+        PROCESS: 'process',
+      },
     },
   },
 };

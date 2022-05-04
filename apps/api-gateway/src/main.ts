@@ -8,12 +8,11 @@ import { BACKEND_ENV } from '@tfg-daw-basilio/environment';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.connectMicroservice({
-    name: 'AUTH_SERVICE',
+    //TODO: change this name into a environment variable
     transport: Transport.RMQ,
     options: {
       urls: [BACKEND_ENV.RABBITMQ_URL],
-      //TODO: search a way to change into a environment variable
-      queue: BACKEND_ENV.QUEUE.RESPONSE.NAME,
+      queue: BACKEND_ENV.QUEUE.GATEWAY.NAME,
       queueOptions: {
         durable: true,
       },

@@ -34,7 +34,13 @@
       "executor": "nx-electron:execute",
       "options": {
         "buildTarget": "desktop:build"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "serve",
+          "projects": "dependencies"
+        }
+      ]
     },
     "package": {
       "executor": "nx-electron:package",

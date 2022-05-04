@@ -4,6 +4,7 @@
     "api": "apps/api",
     "api-auth": "apps/api-auth",
     "api-gateway": "apps/api-gateway",
+    "api-dispatcher": "apps/api-dispatcher",
     "api-interfaces": "libs/api-interfaces",
     "desktop": "apps/desktop",
     "environment": "libs/environment",

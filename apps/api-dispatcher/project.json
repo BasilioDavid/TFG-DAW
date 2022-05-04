@@ -1,0 +1,56 @@
+{
+  "root": "apps/api-dispatcher",
+  "sourceRoot": "apps/api-dispatcher/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/api-dispatcher",
+        "main": "apps/api-dispatcher/src/main.ts",
+        "tsConfig": "apps/api-dispatcher/tsconfig.app.json",
+        "assets": [
+          "apps/api-dispatcher/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/api-dispatcher/src/environments/environment.ts",
+              "with": "apps/api-dispatcher/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "api-dispatcher:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/api-dispatcher/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/api-dispatcher"],
+      "options": {
+        "jestConfig": "apps/api-dispatcher/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
