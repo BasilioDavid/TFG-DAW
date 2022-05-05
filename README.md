@@ -4,7 +4,7 @@
 
 ### Backend
 - [ ] Login with JWK
-- [ ] Login service
+- [ ] Log service
 - [ ] File Manager Service
 - [ ] Socket
 
