@@ -37,6 +37,8 @@
     "amqp-connection-manager": "^4.1.2",
     "amqplib": "^0.8.0",
     "bcrypt": "^5.0.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "dexie": "^3.2.1",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
@@ -44,6 +46,7 @@
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
     "typeorm": "^0.2.45",
+    "uuid": "^8.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -70,6 +73,7 @@
     "@types/jest": "27.0.2",
     "@types/node": "16.11.7",
     "@types/passport-jwt": "^3.0.6",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "~5.18.0",
     "@typescript-eslint/parser": "~5.18.0",
     "commitlint": "^16.2.3",
