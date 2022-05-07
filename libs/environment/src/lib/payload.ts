@@ -27,12 +27,21 @@ class User {
 }
 
 class RejectedFragment {
+  @IsString()
+  @IsOptional()
   reason?: string;
+
+  @IsString()
+  @IsOptional()
   code?: string;
 }
 
 class ResolveFragment {
+  @IsString()
+  @IsOptional()
   code?: string;
+
+  @IsOptional()
   data?: unknown;
 }
 
