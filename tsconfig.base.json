@@ -1,6 +1,16 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
