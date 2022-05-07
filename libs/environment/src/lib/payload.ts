@@ -1,25 +1,56 @@
-export interface Payload {
-  user: User;
-  rejected?: RejectedFragment;
-  resolved?: ResolveFragment;
-  ended: boolean;
-}
+import {
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
-interface User {
-  id?: string;
+class User {
+  @IsString()
+  @IsOptional()
   name?: string;
+
+  @IsString()
+  @IsOptional()
   pass?: string;
+
+  @IsString()
+  @IsOptional()
   rol?: string;
-  valid: boolean;
+
+  valid = false;
+
+  @IsString()
+  @IsOptional()
   token?: string;
 }
 
-interface RejectedFragment {
-  reason: string;
-  code: string;
+class RejectedFragment {
+  reason?: string;
+  code?: string;
 }
 
-interface ResolveFragment {
-  code: string;
-  data: unknown;
+class ResolveFragment {
+  code?: string;
+  data?: unknown;
+}
+
+export class Payload {
+  @IsNotEmpty()
+  @ValidateNested({ each: true })
+  @Type(() => User)
+  user?: User;
+
+  @IsOptional()
+  @ValidateNested({ each: true })
+  @Type(() => RejectedFragment)
+  rejected?: RejectedFragment;
+
+  @IsOptional()
+  @ValidateNested({ each: true })
+  @Type(() => ResolveFragment)
+  resolved?: ResolveFragment;
+
+  ended = false;
 }
