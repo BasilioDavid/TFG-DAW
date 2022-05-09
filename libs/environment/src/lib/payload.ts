@@ -2,6 +2,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  ValidateIf,
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
@@ -9,20 +10,30 @@ import { Type } from 'class-transformer';
 class User {
   @IsString()
   @IsOptional()
+  @ValidateIf((o) => o.pass)
+  @IsNotEmpty({
+    groups: ['login'],
+  })
   name?: string;
 
   @IsString()
   @IsOptional()
+  @ValidateIf((o) => o.name)
+  @IsNotEmpty({
+    groups: ['login'],
+  })
   pass?: string;
 
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   rol?: string;
 
   valid = false;
 
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   token?: string;
 }
 
@@ -47,7 +58,7 @@ class ResolveFragment {
 
 export class Payload {
   @IsNotEmpty()
-  @ValidateNested({ each: true })
+  @ValidateNested({ each: true, groups: ['login'] })
   @Type(() => User)
   user?: User;
 
@@ -61,5 +72,5 @@ export class Payload {
   @Type(() => ResolveFragment)
   resolved?: ResolveFragment;
 
-  ended = false;
+  status: 'processing' | 'rejected' | 'resolved' = 'processing';
 }
