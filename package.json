@@ -1,7 +1,7 @@
 {
-  "name": "tfg-daw-basilio",
+  "name": "pi_basilio_david_gomez_fernandez",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "Copyright (c) 2022-2053, PI Basilio David Gomez Fernandez",
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
